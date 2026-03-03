@@ -654,7 +654,7 @@
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOOBCk8XAKlCoTgyGKzqqHAViJY3nu2lFWrgWhzmYNiBBA8g/viewform?usp=header" target="_blank">Apply for free tutoring →</a>
         </div>
       </div>
-      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <form class="contact-form reveal" action="https://formspree.io/f/mzdallyg" method="POST">
         <div class="form-row">
           <input type="text" placeholder="First Name" required />
           <input type="text" placeholder="Last Name" required />
@@ -707,7 +707,4 @@
     }, { threshold: 0.08 });
     reveals.forEach(el => observer.observe(el));
 
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.tex
+ 
