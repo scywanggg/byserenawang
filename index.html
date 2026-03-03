@@ -445,13 +445,6 @@
       gap: 20px;
       border-top: 1px solid var(--border);
     }
-    .footer-logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
     footer p { font-size: 0.78rem; }
     .footer-links { display: flex; gap: 28px; }
     .footer-links a {
@@ -474,11 +467,8 @@
       from { opacity: 0; }
       to   { opacity: 1; }
     }
-   .reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal { opacity: 1; transform: translateY(0); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -649,18 +639,18 @@
       <div class="contact-info reveal">
         <p>Have questions about our services, want to apply for free tutoring, or just want to learn more? Fill out the form and we'll get back to you within 1–2 business days.</p>
         <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#3c54595050537c5e454f594e59525d4b5d525b125f5351"><span class="__cf_email__" data-cfemail="d7bfb2bbbbb897b5aea4b2a5b2b9b6a0b6b9b0f9b4b8ba">[email&#160;protected]</span></a>
+          <a href="mailto:hello@byserenawang.com">hello@byserenawang.com</a>
           <a href="#services">View all services →</a>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOOBCk8XAKlCoTgyGKzqqHAViJY3nu2lFWrgWhzmYNiBBA8g/viewform?usp=header" target="_blank">Apply for free tutoring →</a>
         </div>
       </div>
       <form class="contact-form reveal" action="https://formspree.io/f/mzdallyg" method="POST">
         <div class="form-row">
-          <input type="text" placeholder="First Name" required />
-          <input type="text" placeholder="Last Name" required />
+          <input type="text" name="first_name" placeholder="First Name" required />
+          <input type="text" name="last_name" placeholder="Last Name" required />
         </div>
-        <input type="email" placeholder="Email Address" required />
-        <select>
+        <input type="email" name="email" placeholder="Email Address" required />
+        <select name="inquiry">
           <option value="" disabled selected>What are you inquiring about?</option>
           <option>Activities Section Edit</option>
           <option>Mock Interview — Async</option>
@@ -672,7 +662,7 @@
           <option>Free Tutoring</option>
           <option>General Question</option>
         </select>
-        <textarea placeholder="Tell us a bit about where you are in your application journey..."></textarea>
+        <textarea name="message" placeholder="Tell us a bit about where you are in your application journey..."></textarea>
         <button type="submit">Send Message</button>
       </form>
     </div>
@@ -690,21 +680,11 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
     });
-
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 70);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    reveals.forEach(el => observer.observe(el));
-
- 
+  </script>
+</body>
+</html>
