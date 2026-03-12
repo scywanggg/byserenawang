@@ -7,6 +7,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K2JCSFMN86"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-K2JCSFMN86');
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -685,6 +694,33 @@
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
     });
-  </script>
+
+    // Track "Book Now" and purchase button clicks
+    document.querySelectorAll('.btn-buy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        gtag('event', 'begin_checkout', {
+          item_name: btn.closest('.service-card').querySelector('.service-name').textContent.trim()
+        });
+      });
+    });
+
+    // Track contact form submission
+    document.querySelector('.contact-form').addEventListener('submit', () => {
+      const inquiry = document.querySelector('select[name="inquiry"]').value;
+      gtag('event', 'generate_lead', { inquiry_type: inquiry });
+    });
+
+    // Track free tutoring CTA clicks
+    document.querySelectorAll('a[href*="formspree"], a[href*="google.com/forms"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'free_tutoring_click');
+      });
+    });
+
+    // Track nav CTA
+    document.querySelector('.nav-cta').addEventListener('click', () => {
+      gtag('event', 'nav_cta_click');
+    });
+</script>
 </body>
 </html>
